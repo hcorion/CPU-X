@@ -20,6 +20,7 @@ before_script:
 - cmake -DCMAKE_BUILD_TYPE=Debug -DWITH_GTK=0 -DCMAKE_INSTALL_PREFIX=/usr ..
 script:
 - make -j $(nproc)
+- cd ..
 - if [[ $TRAVIS_OS_NAME == linux ]]; then
     bash -ex appimage.sh &&
     chmod +x ~/out/CPU-X*.AppImage &&
@@ -27,6 +28,7 @@ script:
     bash ./upload.sh ~/out/CPU-X*.AppImage;
   fi
 after_success:
+- cd build
 - sudo make install
 - sudo cpu-x --issue-fmt
 
