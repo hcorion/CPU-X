@@ -15,7 +15,7 @@ GIT_REV=$(git rev-parse --short HEAD)
 echo $GIT_REV
 
 make install/strip DESTDIR=$HOME/$APP/$APP.AppDir
-mv $HOME/$APP/$APP.AppDir/usr/{games,bin}
+mv $HOME/$APP/$APP.AppDir/usr/bin
 
 cd $HOME/$APP/
 
